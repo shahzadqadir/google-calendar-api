@@ -1,4 +1,5 @@
 from unittest import TestCase
+import datetime
 from event import Event
 
 class TestEvent(TestCase):
@@ -29,7 +30,11 @@ class TestEvent(TestCase):
              'reminders': {'useDefault': True}, 'eventType': 'default'}
             )
 
-    def test_event_creation(self):
+    def test_create_empty_event(self):
+        event = Event(summary='with summary only')
+        self.assertEqual(event.__str__(), 'with summary only')
+
+    def test_event_creation_with_json(self):
         self.assertEqual(self.event.__str__(), 'Community Mental Health')
         self.assertEqual(str(self.event.start_time), '11:30:00')
         self.assertEqual(str(self.event.end_time), '12:30:00')
@@ -37,3 +42,13 @@ class TestEvent(TestCase):
     def test_event_comparison(self):
         self.assertGreater(self.event2, self.event, 'event 1 comes first')
         self.assertLess(self.event, self.event2, 'event 1 comes first')
+
+    def test_create_event_with_params(self):
+        event = Event(
+            summary='test event with params', start_date=datetime.datetime.now().date(),
+            end_date=datetime.datetime.now().date(),
+            start_time=datetime.datetime.now().time(), end_time=(datetime.datetime.now()+datetime.timedelta(hours=1)).time(),
+            )
+        self.assertEqual(event.__str__(), 'test event with params')
+        self.assertEqual(event.start_date, datetime.datetime.now().date())
+        self.assertEqual(event.end_date, datetime.datetime.now().date())

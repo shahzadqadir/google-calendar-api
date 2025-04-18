@@ -33,10 +33,26 @@ class GoogleCalendarAPI:
         events = events_result.get('items', [])
         for event in events:
             print(event)
-            # start = event['start'].get('dateTime', event['start'].get('date'))
-            # print(start, event['summary'])
+
+    def add_event_to_google_calendar(self, summary: str, description: str='', start: datetime=datetime.datetime.now().isoformat(),
+                  end: datetime=(datetime.datetime.now() + datetime.timedelta(hours=1)).isoformat()):
+        event = {
+            'summary': f'{summary}',
+            'description': f'{description}',
+            'start': {
+                'dateTime': str(start),
+                'timeZone': 'Europe/London',
+                },
+            'end': {
+                'dateTime': str(end),
+                'timeZone': 'Europe/London',
+                }
+            }
+        event_result = self.service.events().insert(calendarId='sync.shahzadqadir@gmail.com', body=event).execute()
+        print(f'Event created: {event_result.get("htmlLink")}')
+
 
 
 if __name__ == "__main__":
     test = GoogleCalendarAPI()
-    test.view_events()
+    test.add_event_to_google_calendar(summary='Test Meeting 1')
