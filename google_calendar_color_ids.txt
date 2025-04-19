@@ -1,0 +1,22 @@
+ID	Color Name	Preview (approx)
+1	Lavender	🟪 Light purple
+2	Sage	    🟩 Soft green
+3	Grape	    🟣 Dark purple
+4	Flamingo	🟥 Pink-red
+5	Banana	    🟨 Yellow
+6	Tangerine	🟧 Orange
+7	Peacock	    🟦 Teal/Blue
+8	Graphite	⚫ Gray
+9	Blueberry	🔵 Blue
+10	Basil	    🟢 Green
+11	Tomato	    🔴 Red
+
+
+Goals Color Coding:
+
+Reduce Weight - 10	Basil	    🟢 Green
+Infrastructure as Code (IAC) - Ansible, Terraform, Netbox   6	Tangerine	🟧 Orange
+CI/CD - Cloud Networking - 1	Lavender	🟪 Light purple
+REST APIs & Model Driven Automation - 7	Peacock	    🟦 Teal/Blue
+Cisco ACI Automation - 5	Banana	    🟨 Yellow
+Admin Work - 8	Graphite	⚫ Gray
